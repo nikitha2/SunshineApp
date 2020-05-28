@@ -1,0 +1,20 @@
+
+
+<resources>
+    <!-- Height of each list item -->
+    <dimen name="list_item_height">44dp</dimen>
+    <dimen name="progressBar">42dp</dimen>
+    <dimen name="list_item_height_half1">22dp</dimen>
+
+    <dimen name="padding">16dp</dimen>
+
+
+    <dimen name="textsize1">22sp</dimen>
+    <dimen name="textsize2">18sp</dimen>
+
+    <dimen name="margin">8dp</dimen>
+    <dimen name="margin2">16dp</dimen>
+
+
+
+</resources>
