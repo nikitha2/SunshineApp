@@ -94,4 +94,6 @@
     <string name="refresh">refresh</string>
     <string name="noDatabczNoInternet">No Data because of no internet Connection</string>
     <string name="noData">No Data</string>
+    <string name="share">Share</string>
+
 </resources>
