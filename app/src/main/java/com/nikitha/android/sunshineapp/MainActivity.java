@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.nikitha.android.sunshineapp.utilities.NetworkUtils;
 import com.nikitha.android.sunshineapp.utilities.SunshineLoader;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -126,18 +127,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         mtoast.show();
 
         Intent intent=new Intent(this,DetailActivity.class);
-        intent.putExtra("date",dataInfo.get(position).getDate());
-        intent.putExtra("desc",dataInfo.get(position).getDescription());
-        intent.putExtra("feelslike",dataInfo.get(position).getFeels_like());
-        intent.putExtra("grndlvl",dataInfo.get(position).getGrnd_level());
-        intent.putExtra("humidity",dataInfo.get(position).getHumidity());
-        intent.putExtra("pressure",dataInfo.get(position).getPressure());
-        intent.putExtra("sealevel",dataInfo.get(position).getSea_level());
-        intent.putExtra("remp",dataInfo.get(position).getTemp());
-        intent.putExtra("tempkf",dataInfo.get(position).getTemp_kf());
-        intent.putExtra("tempmin",dataInfo.get(position).getTemp_min());
-        intent.putExtra("tempmax",dataInfo.get(position).getTemp_max());
-        intent.putExtra("windspeed",dataInfo.get(position).getWindSpeed());
+        Bundle args = new Bundle();
+        intent.putExtra("ARRAYLIST",dataInfo.get(position));
         startActivity(intent);
     }
 }

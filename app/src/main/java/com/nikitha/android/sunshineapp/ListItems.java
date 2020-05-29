@@ -1,6 +1,8 @@
 package com.nikitha.android.sunshineapp;
 
-public class ListItems {
+import java.io.Serializable;
+
+public class ListItems  implements Serializable {
     String date;
 
     String temp;

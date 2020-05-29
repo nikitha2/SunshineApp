@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class DetailActivity extends AppCompatActivity {
 
     @Override
@@ -15,9 +17,9 @@ public class DetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
+        ListItems listItems = (ListItems) getIntent().getSerializableExtra("ARRAYLIST");
         TextView text=(TextView) findViewById(R.id.text);
-        text.setText(intent.getStringExtra("date"));
-
+        text.setText(listItems.getDate() +" "+listItems.getDescription() );
 
     }
 }
