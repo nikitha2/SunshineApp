@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     AdaptorRecyclerView adaptorRecyclerView;
     //ArrayAdapterSunshine adapter;
     Toast mtoast = null;
+    ArrayList<ListItems> dataInfo=new ArrayList<ListItems>();
 
     TextView emptyTextView;
     @Override
@@ -91,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         emptyTextView=(TextView) findViewById(R.id.emptyView);
         if(data!=null && data.size()>0){
             //adapter.clear();
+            dataInfo=data;
             adaptorRecyclerView.setData(data);
             recyclerView.setAdapter(adaptorRecyclerView);
             emptyTextView.setVisibility(View.INVISIBLE);
@@ -121,5 +124,20 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         mtoast = Toast.makeText(this, toastMessage, Toast.LENGTH_LONG);
 
         mtoast.show();
+
+        Intent intent=new Intent(this,DetailActivity.class);
+        intent.putExtra("date",dataInfo.get(position).getDate());
+        intent.putExtra("desc",dataInfo.get(position).getDescription());
+        intent.putExtra("feelslike",dataInfo.get(position).getFeels_like());
+        intent.putExtra("grndlvl",dataInfo.get(position).getGrnd_level());
+        intent.putExtra("humidity",dataInfo.get(position).getHumidity());
+        intent.putExtra("pressure",dataInfo.get(position).getPressure());
+        intent.putExtra("sealevel",dataInfo.get(position).getSea_level());
+        intent.putExtra("remp",dataInfo.get(position).getTemp());
+        intent.putExtra("tempkf",dataInfo.get(position).getTemp_kf());
+        intent.putExtra("tempmin",dataInfo.get(position).getTemp_min());
+        intent.putExtra("tempmax",dataInfo.get(position).getTemp_max());
+        intent.putExtra("windspeed",dataInfo.get(position).getWindSpeed());
+        startActivity(intent);
     }
 }
