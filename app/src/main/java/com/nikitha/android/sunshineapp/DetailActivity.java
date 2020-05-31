@@ -51,6 +51,9 @@ public class DetailActivity extends AppCompatActivity {
             case android.R.id.home://this.finish();
                                     NavUtils.navigateUpFromSameTask(this);
                                     return true;
+
+            case R.id.activity_settings:Intent intent = new Intent(this, SettingsActivity.class);
+                                        startActivity(intent);
         }
         return true;
     }

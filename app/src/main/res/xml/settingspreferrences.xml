@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:key="@string/units_key"
+        android:title="@string/units"
+        android:defaultValue="@bool/pref_show_default"
+        android:summaryOn="@string/celsius"
+        android:summaryOff="@string/fahrenheit"
+        android:textSize="@dimen/textSizePref"/>
+
+    <ListPreference
+        android:defaultValue="@string/Albany"
+        android:entries="@array/pref_location_option_labels"
+        android:entryValues="@array/pref_location_option_values"
+        android:key="@string/location_key"
+        android:title="@string/location_title"
+        android:summary="@string/Albany"/>
+
+</PreferenceScreen>
