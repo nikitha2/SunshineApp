@@ -65,11 +65,11 @@ public final class NetworkUtils {
      * @param locationQuery The location that will be queried for.
      * @return The URL to use to query the weather server.
      */
-    public static URL buildUrl(String locationQuery) throws MalformedURLException {
+    public static URL buildUrl(String locationQuery,String units) throws MalformedURLException {
         Uri buildUri;
         buildUri=Uri.parse(DYNAMIC_WEATHER_URL).buildUpon().
                    // appendQueryParameter(CALLBACK,"test").
-                    //appendQueryParameter(UNITS_PARAM,"metric or imperial").
+                    appendQueryParameter(UNITS_PARAM,units).
                     appendQueryParameter(QUERY_PARAM,locationQuery).
                     build();
         URL url=new URL(buildUri.toString());

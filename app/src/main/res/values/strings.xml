@@ -103,6 +103,9 @@
     <string name="units">Units</string>
     <string name="celsius">Celsius</string>
     <string name="fahrenheit">Fahrenheit</string>
+    <string name="metric">metric</string>
+    <string name="Imperial">Imperial</string>
+
 
     <string name="Albany">Albany, N.Y.</string>
     <string name="Albuquerque">Albuquerque, N.M.</string>
@@ -163,7 +166,7 @@
     <string name="Memphis">Memphis, Tenn.</string>
     <string name="Miami">Miami, Fla.</string>
     <string name="Milwaukee">Milwaukee, Wisc.</string>
-    <string name="MinneapolisStPaul">Minneapolis–St. Paul, Minn.</string>
+    <string name="MinneapolisStPaul">Minneapolis</string>
     <string name="Mobile">Mobile, Ala.</string>
     <string name="Montgomery">Montgomery, Ala.</string>
     <string name="MtWashington">Mt. Washington, N.H.</string>
