@@ -20,11 +20,15 @@ import android.util.Log;
 
 import com.nikitha.android.sunshineapp.R;
 import com.nikitha.android.sunshineapp.data.SunshinePreferences;
+import com.nikitha.android.sunshineapp.database.TaskEntry;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public final class SunshineWeatherUtils {
 
     private static final String LOG_TAG = SunshineWeatherUtils.class.getSimpleName();
-
+    Context context;
     /**
      * This method will convert a temperature from Celsius to Fahrenheit.
      *
@@ -51,7 +55,6 @@ public final class SunshineWeatherUtils {
      */
     public static String formatTemperature(Context context, double temperature) {
         int temperatureFormatResourceId = R.string.format_temperature_celsius;
-
         if (!SunshinePreferences.isMetric(context)) {
             temperature = celsiusToFahrenheit(temperature);
             temperatureFormatResourceId = R.string.format_temperature_fahrenheit;
@@ -390,4 +393,40 @@ public final class SunshineWeatherUtils {
         Log.e(LOG_TAG, "Unknown Weather: " + weatherId);
         return R.drawable.art_storm;
     }
+
+    public static List<TaskEntry> finMinMaxTemp(List<TaskEntry> tasks){
+        List<TaskEntry>  tasksNew=new ArrayList<>();
+        List<TaskEntry> list=tasks;
+        String date=""; Double min=0.0; Double max=0.0;
+
+        date= list.get(0).getDate_txt();
+        min=Double.valueOf(list.get(0).getTemp_min());
+        max=Double.valueOf(list.get(0).getTemp_max());
+        String weatherid=list.get(0).getWeatherid(),desc=list.get(0).getDescription();
+        for(int i=1;i<list.size();i++){
+            String date1=list.get(i).getDate_txt();
+            if(date.equalsIgnoreCase(date1)){
+                if(Double.valueOf(list.get(i).getTemp_min()) < min){
+                    min=Double.valueOf(list.get(i).getTemp_min());
+                    weatherid=list.get(i).getWeatherid();
+                    desc=list.get(i).getDescription();
+
+                }
+                if(Double.valueOf(list.get(i).getTemp_max()) > max){
+                    max=Double.valueOf(list.get(i).getTemp_max());
+                }
+            }
+            else{
+                tasksNew.add(new TaskEntry(date,null,null,null,Double.toString(max),Double.toString(min),null,null,null,null,null,null,desc,weatherid));
+                date=date1;
+                min=Double.valueOf(list.get(i).getTemp_min());
+                max=Double.valueOf(list.get(i).getTemp_max());
+                weatherid=list.get(0).getWeatherid();
+                desc=list.get(0).getDescription();
+
+            }
+        }
+        return tasksNew;
+    }
+
 }

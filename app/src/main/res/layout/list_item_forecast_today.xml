@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/list_item_selector" >
+    <ImageView
+        android:id="@+id/weatherImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="@dimen/margin"
+        android:background="@drawable/art_clouds"
+        android:gravity="center"
+        android:scaleType="fitCenter"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.7" />
+
+    <TextView
+        android:id="@+id/dayNtime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Day and Date"
+        android:gravity="right"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintLeft_toRightOf="@+id/weatherImage"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingTop="@dimen/margin3"
+        android:paddingLeft="@dimen/margin2"
+        android:paddingRight="@dimen/margin2" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:text="Description"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:paddingLeft="@dimen/margin"
+        android:background="@drawable/rectangle_drawable"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weatherImage"/>
+
+    <TextView
+        android:id="@+id/Maxtemp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:paddingRight="@dimen/margin2"
+        android:gravity="center"
+        android:text="31"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/weatherImage"
+        app:layout_constraintTop_toBottomOf="@+id/dayNtime"
+        app:layout_constraintWidth_percent="0.2" />
+
+    <TextView
+        android:id="@+id/Mintemp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/margin2"
+        android:paddingRight="@dimen/margin2"
+        android:gravity="center"
+        android:text="29"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/weatherImage"
+        app:layout_constraintTop_toBottomOf="@+id/Maxtemp"
+        app:layout_constraintWidth_percent="0.2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

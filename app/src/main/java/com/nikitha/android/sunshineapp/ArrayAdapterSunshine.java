@@ -33,7 +33,7 @@ class ArrayAdapterSunshine extends ArrayAdapter<ListItems> {
         final String[] parts = (parent.toString()).split("app:id/",2);
         currentword = getItem(position);
 
-        TextView temp=(TextView) listItemView.findViewById(R.id.temp);
+        TextView temp=(TextView) listItemView.findViewById(R.id.Maxtemp);
         TextView weather=(TextView) listItemView.findViewById(R.id.description);
 
         temp.setText(currentword.temp);

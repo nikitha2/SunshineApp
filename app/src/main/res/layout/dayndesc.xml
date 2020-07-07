@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linearLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/dayNtime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Day and Date"
+        app:layout_constraintLeft_toRightOf="@+id/weatherImage"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/margin2"
+        android:layout_marginLeft="@dimen/margin2"
+        android:layout_marginRight="@dimen/margin2" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        app:layout_constraintLeft_toRightOf="@+id/weatherImage"
+        app:layout_constraintTop_toBottomOf="@id/dayNtime"
+        android:layout_marginLeft="@dimen/margin2"
+        android:layout_marginRight="@dimen/margin2"
+        android:layout_marginBottom="@dimen/margin2"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

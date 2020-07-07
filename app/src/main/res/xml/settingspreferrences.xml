@@ -19,4 +19,12 @@
         android:title="@string/location_title"
         android:summary="@string/Albany"/>
 
+    <SwitchPreference
+        android:key="@string/notifications_key"
+        android:title="@string/Notifications"
+        android:defaultValue="@bool/pref_show_default"
+        android:summaryOn="@string/on"
+        android:summaryOff="@string/off"
+        android:textSize="@dimen/textSizePref"/>
+
 </PreferenceScreen>

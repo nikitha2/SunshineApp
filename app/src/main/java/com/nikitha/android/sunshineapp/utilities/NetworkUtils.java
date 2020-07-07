@@ -16,6 +16,7 @@
 package com.nikitha.android.sunshineapp.utilities;
 
 import android.net.Uri;
+import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -73,6 +74,7 @@ public final class NetworkUtils {
                     appendQueryParameter(QUERY_PARAM,locationQuery).
                     build();
         URL url=new URL(buildUri.toString());
+        Log.i("TAG","------------------------"+url.toString());
         return url;
     }
 

@@ -19,8 +19,13 @@ import android.content.Context;
 import android.text.format.DateUtils;
 import com.nikitha.android.sunshineapp.R;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.TimeZone;
+
+import static java.lang.Math.E;
 
 /**
  * Class for handling date conversions that are useful for Sunshine.
@@ -106,6 +111,8 @@ public final class SunshineDateUtils {
      * or "Friday"
      */
     public static String getFriendlyDateString(Context context, long dateInMillis, boolean showFullDate) {
+
+
 
         long localDate = getLocalDateFromUTC(dateInMillis);
         long dayNumber = getDayNumber(localDate);
@@ -193,4 +200,77 @@ public final class SunshineDateUtils {
             return dayFormat.format(dateInMillis);
         }
     }
+
+    /**
+            * Given a day, returns just the name to use for that day.
+            *   E.g "today", "tomorrow", "Wednesday".
+            *
+            * @param context      Context to use for resource localization
+     * @param date The date in 2019-10-05 format (local time)
+     *
+             * @return the string day of the week
+     *//*
+    public static String getFriendlyDateString(Context context, String date, boolean showFullDate) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+        Date date1 = sdf.parse(date);
+        long dateinMilli = date1.getTime();
+
+        Date localDate = new Date();
+        DateFormat currentDayNumber = new SimpleDateFormat("YYYY/MM/yy");
+        String todaysDate = currentDayNumber.format(localDate);
+        if (date == todaysDate || showFullDate) {
+            *//*
+             * If the date we're building the String for is today's date, the format
+             * is "Today, June 24"
+             *//*
+            String dayName = getDayNameForDate(context, todaysDate,date);
+            String readableDate = getReadableDateString(context, dateinMilli);
+            if (dayNumber - currentDayNumber < 2) {
+                *//*
+                 * Since there is no localized format that returns "Today" or "Tomorrow" in the API
+                 * levels we have to support, we take the name of the day (from SimpleDateFormat)
+                 * and use it to replace the date from DateUtils. This isn't guaranteed to work,
+                 * but our testing so far has been conclusively positive.
+                 *
+                 * For information on a simpler API to use (on API > 18), please check out the
+                 * documentation on DateFormat#getBestDateTimePattern(Locale, String)
+                 * https://developer.android.com/reference/android/text/format/DateFormat.html#getBestDateTimePattern
+                 *//*
+                String localizedDayName = new SimpleDateFormat("EEEE").format(localDate);
+                return readableDate.replace(localizedDayName, dayName);
+            } else {
+                return readableDate;
+            }
+        } else if (dayNumber < currentDayNumber + 7) {
+            *//* If the input date is less than a week in the future, just return the day name. *//*
+            return getDayName(context, localDate);
+        } else {
+            int flags = DateUtils.FORMAT_SHOW_DATE
+                    | DateUtils.FORMAT_NO_YEAR
+                    | DateUtils.FORMAT_ABBREV_ALL
+                    | DateUtils.FORMAT_SHOW_WEEKDAY;
+
+            return DateUtils.formatDateTime(context, localDate, flags);
+        }
+    }
+
+    private static String getDayNameForDate(Context context, String todaysDate,String date) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+        Date date1 = sdf.parse(date);
+        long dateinMilli = date1.getTime();
+        if (todaysDate == date) {
+            return context.getString(R.string.today);
+        } else if (date1.getTime() == sdf.parse(date).getTime()+ 1) {
+            return context.getString(R.string.tomorrow);
+        }
+        else {
+                *//*
+                 * Otherwise, if the day is not today, the format is just the day of the week
+                 * (e.g "Wednesday")
+                 *//*
+                SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE");
+                return dayFormat.format(dateinMilli);
+        }
+    }*/
+
 }
