@@ -18,7 +18,6 @@
         android:id="@+id/tv_weather_data"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"
         android:text="Hello World!"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

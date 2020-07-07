@@ -14,6 +14,7 @@
         android:autoSizeTextType="uniform"
         android:gravity="left|center_vertical"
         android:text="@string/title"
+        android:paddingLeft="@dimen/padding"
         app:layout_constraintHeight_percent="0.1"
         app:layout_constraintWidth_percent="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,6 +24,8 @@
         android:id="@+id/pressumeVal"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
+        android:paddingLeft="@dimen/padding"
+
         android:autoSizeTextType="uniform"
         android:gravity="left|center_vertical"
         android:text="@string/value"

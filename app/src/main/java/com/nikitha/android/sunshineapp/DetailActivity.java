@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ShareActionProvider;
@@ -25,26 +27,27 @@ import com.nikitha.android.sunshineapp.layers.TaskViewModelDetailsFactory;
 import com.nikitha.android.sunshineapp.layers.TaskViewModelFactory;
 import com.nikitha.android.sunshineapp.utilities.NetworkUtils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DetailActivity extends AppCompatActivity {
     ShareActionProvider actionProvider;
-    private static final Object FORECAST_SHARE_HASHTAG ="WeatherForToday" ;
+    private static final Object FORECAST_SHARE_HASHTAG ="Weather For Today" ;
     Intent intent;
     TaskViewModelDetails viewModel;
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManagerRecyclerView;
     AdaptorRecyclerViewDetails adaptorRecyclerView;
     List<TaskEntry> taskEntriesData;
-
+    TaskEntry listItems;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
         intent = getIntent();
-        final TaskEntry listItems = (TaskEntry) getIntent().getSerializableExtra("ARRAYLIST");
+        listItems = (TaskEntry) getIntent().getSerializableExtra("ARRAYLIST");
 
         recyclerView=(RecyclerView) findViewById(R.id.tv_weather_dataDetails);
         adaptorRecyclerView=new AdaptorRecyclerViewDetails(this,new ArrayList<TaskEntry>());
@@ -97,14 +100,29 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private Intent createShareForecastIntent() {
-        ListItems listItems = (ListItems) getIntent().getSerializableExtra("ARRAYLIST");
-        ListItems mForecast = listItems;
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean units = sharedPreferences.getBoolean(getString(R.string.units_key), getResources().getBoolean(R.bool.pref_show_default));
+        String celfar = celOrFar(units);
+        Serializable listItems = getIntent().getSerializableExtra("ARRAYLIST");
+        String mForecast = listItems.toString();
 
+        TaskEntry task = taskEntriesData.get(0);
         Intent shareIntent = ShareCompat.IntentBuilder.from(this)
                 .setType("text/plain")
-                .setText(mForecast.getDate() + FORECAST_SHARE_HASHTAG)
+                .setText(FORECAST_SHARE_HASHTAG+"\n"+"Todays Max temp: "+task.getTemp_max()+" "+celfar+"\n"+"Todays Min Temp:" +task.getTemp_min()+" "+celfar+"\n")
                 .getIntent();
         return shareIntent;
     }
-
+    public String celOrFar(boolean units){
+        String unitsValue1;
+        if(units){
+            //F
+            unitsValue1=getString(R.string.celsius);
+        }
+        else{
+            //C
+            unitsValue1=getString(R.string.fahrenheit);
+        }
+        return unitsValue1;
+    }
 }
