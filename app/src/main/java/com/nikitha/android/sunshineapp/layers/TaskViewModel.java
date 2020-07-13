@@ -30,8 +30,8 @@ public class TaskViewModel extends ViewModel {
 
     public TaskViewModel(Bundle input, Context context) {
         tasksRepository = new TasksRepository(input,context);
-        tasksRepository.startSync(input);
-//        ServiceTasks.executeTask(context, ServiceTasks.WEATHER_SERVICE_ACTION, input.getString("url"));
+       // tasksRepository.startSync(input);
+        ServiceTasks.executeTask(context, ServiceTasks.WEATHER_SERVICE_ACTION, input.getString("url"));
         tasks = tasksRepository.loadAllTasks();
     }
 

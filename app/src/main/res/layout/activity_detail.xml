@@ -16,6 +16,7 @@
         android:layout_height="match_parent"
         android:text="Hello World!"
         android:textSize="20sp"
+        android:tag="swlessThan600dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

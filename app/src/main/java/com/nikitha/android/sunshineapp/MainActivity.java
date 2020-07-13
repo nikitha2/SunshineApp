@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -33,6 +34,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.Inflater;
 
 import static com.nikitha.android.sunshineapp.sync.ServiceTasks.loadWeatherDataFromWebService;
 import static com.nikitha.android.sunshineapp.utilities.SunshineWeatherUtils.finMinMaxTemp;
@@ -62,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements /*LoaderManager.L
         setContentView(R.layout.activity_forecast);
         PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(this);
         recyclerView=(RecyclerView) findViewById(R.id.tv_weather_data);
+
         networkUtils=new NetworkUtils();
         adaptorRecyclerView=new AdaptorRecyclerView(this,new ArrayList<TaskEntry>(),this);
         layoutManagerRecyclerView=new LinearLayoutManager(this);
